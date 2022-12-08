@@ -16,17 +16,12 @@ class FavoritesScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         ShopCubit cubit = ShopCubit.get(context);
-        return Conditional.single(
-          conditionBuilder: (context) => cubit.favoritesModel == null,
-          context: context,
-          widgetBuilder: (context) => ListView.separated(
-            physics: BouncingScrollPhysics(),
-            itemBuilder: (context, index) => favoriteItem(cubit.favoritesDataModel!, index, context),
-            separatorBuilder: (context, index) => buildDivider(),
-            itemCount: cubit.favoritesDataModel!.data!.data!.length,
-          ),
-          fallbackBuilder: (context) => Center(child: CircularProgressIndicator()),
-        );
+        return cubit.favoritesModel != null ? ListView.separated(
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) => favoriteItem(cubit.favoritesDataModel!, index, context),
+          separatorBuilder: (context, index) => buildDivider(),
+          itemCount: cubit.favoritesDataModel!.data!.data!.length,
+        ) : emptyScreen();
       });
   }
 

@@ -27,12 +27,12 @@ class LoginCubit extends Cubit<LoginStates> {
           'email':email,
           'password':password,
         }).then((value) {
-          emit(LoginSuccessState(shopLoginModel!));
-          defaultToast(message: 'Successfully', state: ToastStates.SUCCESS);
-          shopLoginModel=ShopLoginModel.fromjson(value.data);
+      // defaultToast(message: 'Successfully', state: ToastStates.SUCCESS);
+      shopLoginModel=ShopLoginModel.fromjson(value.data);
+      emit(LoginSuccessState(shopLoginModel!));
 
     }).catchError((onError){
-      defaultToast(message: onError.toString(), state: ToastStates.ERROR);
+      // defaultToast(message: onError.toString(), state: ToastStates.ERROR);
       print("Error: " + onError.toString());
       emit(LoginErrorState());
     });

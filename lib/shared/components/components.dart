@@ -146,6 +146,19 @@ Future navigateAndFinish (context,widget){
 
 }
 
+Widget emptyScreen(){
+  return Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(Icons.menu,size: 100.0,color: Colors.grey,),
+        Text('There Are No Items Yet,Please Add Some Items',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 14.0),)
+      ],
+    ),
+  );
+}
+
+
 Widget defaultTextButton({
   required Function function,
   required String text,
